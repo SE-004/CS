@@ -86,7 +86,10 @@ print(person_2)
 print(person)
 
 # 8. Using setdefault()
-# Use setdefault() to retrieve the value of a key that exists, and then for a key that doesn’t exist, adding it with a default value.
-
+# Use setdefault() to retrieve the value of a key that exists, and then for a key that doesn’t exist, adding it with 
+# a default value.
+print(person.setdefault("name", "Unknown"))
+print(person.setdefault("email", "Not provided"))
 
 # Print the dictionary to observe changes.
+print(person)
