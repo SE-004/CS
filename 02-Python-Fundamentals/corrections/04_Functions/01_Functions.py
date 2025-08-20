@@ -39,13 +39,35 @@ print(factorial_result)
 # Create a function fibonacci(n) that returns a list containing the first n numbers of the Fibonacci sequence.
 # Use loops and conditionals to calculate each Fibonacci number.
 # Start the sequence with 0 and 1, then build the sequence up to n terms.
+def fibonacci(n):
+    fib_sequence = [];
+    a, b = 0, 1;
+    for _ in range(n):
+        fib_sequence.append(a);
+        a, b = b, a + b;
+    return fib_sequence;
+
+print("fibonacci sequence", fibonacci(10));
 
 # 5. Maximum of Two Numbers
 # Write a function max_of_two(a, b) that returns the larger of two numbers.
 # Use an if...else conditional to compare a and b.
 # Return the greater value.
+def max_of_two(a, b):
+    if a > b:
+        return a;
+    elif b > a:
+        return b;
+    else:
+        return f"{a} and {b} are equal."
 
+print(max_of_two(6,6))
 # 6. Print a Pattern with Nested Loops
 # Design a function print_triangle(rows) that prints a right-angled triangle of asterisks (*) with a given number of rows.
 # Use nested loops: an outer loop for rows and an inner loop for printing asterisks in each row.
 # Each subsequent row should have one more asterisk than the previous row.
+def print_triangle(rows):
+    for i in range(1, rows + 1):
+        print("*" * i);
+
+print_triangle(5)
