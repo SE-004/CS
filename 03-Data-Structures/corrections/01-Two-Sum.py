@@ -19,3 +19,6 @@ def two_sum_enumerate(nums: list[int], target: int):
             count2+=1
             if item == target - num:
                 return [i, j];
+
+
+
