@@ -1,0 +1,1 @@
+groceries = ["milk", "eggs", "vinager", "milk", "apples", "potatos", "eggs"];
