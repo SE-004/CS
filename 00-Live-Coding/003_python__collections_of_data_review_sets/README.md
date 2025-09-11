@@ -9,7 +9,7 @@ Sets
 
 ### Activity 2: Add And Remove
 
-1.  Add three new items to the set `shopping_list` and print it.
+1.  Add thåree new items to the set `shopping_list` and print it.
     
 2.  Remove the item `sugar` from the `shopping_list` and print it.
     
