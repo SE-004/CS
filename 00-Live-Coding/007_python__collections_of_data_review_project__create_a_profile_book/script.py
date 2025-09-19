@@ -6,7 +6,7 @@ alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 # 1.  #### Create a variable for:
     
 #     *   `person` - a list that stores the following items:
-person = [("first name", "John"),("last name", "Doe"), ("birthdate", "12-12-1986"),("age", "44"),("favorite color","blue")]
+person = [("first name", "John"),("last name", "Doe"), ("birthdate", "12-12-1986"),("age", "38"),("favorite color","blue")]
 #         *   A tuple that stores `"first name` and `"John"`.
             
 #         *   A tuple that stores `"last name"` and `"Doe"`.
@@ -40,7 +40,7 @@ profile = {letter: {} for letter in alphabet}
 #     *   Add 2 more items to the list.
 favorite_foods[-1].append("apples")
 favorite_foods[-1].append("bananas")
-print(favorite_foods)
+# print(favorite_foods)
 
 #     *   Remove the item that is your less favorite of all the foods.
 favorite_foods[1].remove("hamburger")
@@ -67,47 +67,73 @@ movies[1].extend(["abc", "def"])
 
 #     *   Update the last value to be `"The empire Strikes Back"`.
 movies[1][-1] = "The empire Strikes Back"
-print(movies)
+# print(movies)
 
 # 5.  #### Remove duplicates from our lists:
     
-#     *   Transform into a list:
-        
-#         *   The tuple `favorite_foods`.
-            
-#         *   The tuple `hobbies`.
-            
-#     *   Update the nested lists of  `favorite_foods`  and `hobbies` by transforming them into sets to remove duplicated values.
-        
-#     *   Transform back into lists both nested sets in `favorite_foods` and `hobbies`.
-        
-#     *   Transform back the lists `favorite_foods` and `hobbies` into tuples.
+#     *   Transform into a set the following lists:
+#         *   The list inside the tuple `favorite_foods`.
+#         *   The list inside the tuple`hobbies`.
+#         *   The list inside the tuple`movies`.
+#     *   Transform back into lists both sets in `favorite_foods`, `hobbies` adn `movies`.
+
+favorite_foods = (favorite_foods[0], list(set(favorite_foods[1])))
+hobbies = (hobbies[0], list(set(hobbies[1])))
+movies = (movies[0], list(set(movies[1])))
+
+# print(favorite_foods)
+# print(hobbies)
+# print(movies)
         
 # 6.  #### Store all the data in the `person` list:
-    
 #     *   Add the `favorite_foods` tuple.
-        
+person.append(favorite_foods)
 #     *   Add the `hobbies` tuple.
-
 #     *   Add the `movies` tuple.
+person.extend([hobbies, movies])
+
         
 # 7.  #### Transform the `person` to be a dictionary.
+person = dict(person)
+# print(person)
     
 # 8.  #### Store the person in the right entry of the profile:
     
 #     *   Loop through the `profile`.
 #     *   Check if the key is the same as the first letter of the `person`'s last name.
 #     *   If it is, create a new key inside it following the format `"Doe, John"`.
+def insert_person_to_profile(profile, person):
+    last_name_init = person["last name"][0].upper()
+    person_key = f"{person['last name']}, {person['first name']}"
+    if last_name_init in profile:
+        profile[last_name_init][person_key] = person.copy()
 
+insert_person_to_profile(profile, person)
+# last_name_init = person["last name"][0].upper()
+# person_key = f"{person['last name']}, {person['first name']}"
+
+# if last_name_init in profile:
+#     profile[last_name_init][person_key] = person.copy()
+
+
+# key = person["last name"][0].upper()
+# if key == person["last name"][0].upper():
+#     profile[key] = {f"{person['last name']}, {person['first name']}":person.copy()}
+
+# for key in profile:
+#     if key == person["last name"][0].upper():
+#         profile[key][f"{person['last name']}, {person['first name']}"] = person.copy()
         
 # 9.  #### Print:
     
 #     *   The `profile` key that has the same value as `"Doe, John"`.
-        
+# print([profile["D"]["Doe, John"]])
 #     *   All the keys from `profile`.
-        
-#     *   All the values from `profile`.
-        
+# for key in profile:
+#     print(f"Key: {key}, Value: {profile[key]}")
+# #     *   All the values from `profile`.
+# for key, value in profile["D"]["Doe, John"].items():
+#     print(f"Key: {key}, Value: {value}")
 #     *   All the keys inside the`"Doe, John"`.
         
 #     *   All the  values inside `"Doe, John"`.
@@ -116,26 +142,51 @@ print(movies)
 # 10.  #### Create some more profiles:
     
 #     *   Update the `person` dictionary to have fresh new info in the keys:
-        
+person.update({
+    "first name": "Alice", 
+    "last name": "Smith", 
+    "birthdate": "01-01-1990", 
+    "age": 35, 
+    "favorite color": "green", 
+    "favorite foods": ["Hamburger"], 
+    "hobbies": [], 
+    "favorite movies": []
+               })        
+# print(person)
 #         *   `"first name"`
-            
+
 #         *   `"last name"`
             
 #         *   `"birthdate"`
             
 #         *   `"age"`
-            
+
 #         *   `"favorite color"`
             
 #         *   `"favorite foods"`
             
 #         *   `"hobbies"`
             
-#         *   `"movies"`
-            
+#         *   `"favorite movies"`
+
 #     *   Add the `person`'s new data to the `people` list (be careful not to create a reference when adding the data).
-        
+# insert_person_to_profile(profile, person)
+people.append(person.copy())
 #     *   Repeat the last two steps for as many people you want.
+person.update({
+                "first name":"umi",
+                "last name":"olo", 
+                "birthdate":"06/08/1994", 
+                "age":"31", 
+                "favorite color":"pink", 
+                "favorite foods":["meat"], 
+                "hobbies":["rugby"],
+                "favorite movies": []
+               })
+# insert_person_to_profile(profile, person)
+people.append(person.copy())
+# print(profile)
+
 # 11.  #### Add the new profiles to the Profile Book:
     
 #     *   Loop through both the `profile`'s keys and the `people` items ([nested loops](https://www.w3schools.com/python/gloss_python_for_nested.asp "Python Nested Loops")).
@@ -147,7 +198,10 @@ print(movies)
 #         *   The key should be in the format of `"Doe, John"` by using the first and last name o the item.
             
 #         *   The value should be the item if the `people`'s list.
-            
+print(people)
+
+for person in people:
+    insert_person_to_profile(profile, person)
 # 12.  #### Print the final dictionary.
     
 
